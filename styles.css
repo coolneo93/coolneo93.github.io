@@ -5,17 +5,27 @@ background-color: black;
 color: white;
 }
 
+#tabs div {
+    display: flex;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+}
+
+#tabs button {
+    padding: 5px;
+    cursor: pointer;
+}
+
+#tabs button:last-child {
+    background-color: #f44336;
+    color: white;
+    margin-left: 5px;
+}
+
 #notepad {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
-    background-color: black;
-    color: white;
-}
-
-button {
-    padding: 10px 15px;
-    margin-right: 5px;
-    cursor: pointer;
 }
