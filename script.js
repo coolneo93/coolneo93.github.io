@@ -5,7 +5,7 @@ let selectedTabIndex = 0;
 
 function selectTab(index) {
     selectedTabIndex = index;
-    notepad.value = tabs[selectedTabIndex];
+    notepad.value = tabs[selectedTabIndex] || '';
 }
 
 function renderTabs() {
@@ -76,6 +76,23 @@ document.getElementById('print').addEventListener('click', () => {
     printWindow.document.write('</body></html>');
     printWindow.document.close();
     printWindow.print();
+});
+
+document.getElementById('download').addEventListener('click', () => {
+    const title = `Tab ${selectedTabIndex + 1}`;
+    const content = notepad.value;
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${title}.txt`;
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    URL.revokeObjectURL(url);
 });
 
 notepad.onkeyup = () => {
