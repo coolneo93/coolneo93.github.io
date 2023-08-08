@@ -1,9 +1,11 @@
 const notepad = document.getElementById('notepad');
 const saveButton = document.getElementById('save');
 const clearButton = document.getElementById('clear');
+const titleInput = document.getElementById('title');
+const downloadButton = document.getElementById('download');
 
 // Load saved text if available
-if(localStorage.getItem('notepadText')) {
+if (localStorage.getItem('notepadText')) {
     notepad.value = localStorage.getItem('notepadText');
 }
 
@@ -19,6 +21,7 @@ clearButton.addEventListener('click', () => {
     localStorage.removeItem('notepadText');
 });
 
+// Download the text as a file with the given title
 downloadButton.addEventListener('click', () => {
     const title = titleInput.value.trim() || 'untitled';
     const content = notepad.value;
@@ -38,4 +41,3 @@ downloadButton.addEventListener('click', () => {
 
     URL.revokeObjectURL(url);
 });
-
