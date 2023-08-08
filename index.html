@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neo Notepad</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Optional: add some styling to better organize the buttons and inputs */
+        #tabs > div {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        textarea {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <h1>Neo Notepad</h1>
@@ -12,8 +21,8 @@
     <button id="new-tab">New Tab</button>
     <button id="save-tabs">Save Tabs</button>
     <button id="clear-tabs">Clear Tabs</button>
-    <button id="download">Download</button>
     <button id="print">Print</button>
+    <button id="download">Download</button>
     <br><br>
     <textarea id="notepad" rows="15" cols="50"></textarea>
     <script src="script.js"></script>
