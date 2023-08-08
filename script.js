@@ -3,6 +3,7 @@ const saveButton = document.getElementById('save');
 const clearButton = document.getElementById('clear');
 const titleInput = document.getElementById('title');
 const downloadButton = document.getElementById('download');
+const printButton = document.getElementById('print');
 
 // Load saved text if available
 if (localStorage.getItem('notepadText')) {
@@ -40,4 +41,14 @@ downloadButton.addEventListener('click', () => {
     document.body.removeChild(a);
 
     URL.revokeObjectURL(url);
+});
+
+printButton.addEventListener('click', () => {
+    const printWindow = window.open('', '_blank');
+    printWindow.document.open();
+    printWindow.document.write('<html><head><title>Print Notepad</title></head><body>');
+    printWindow.document.write('<pre>' + notepad.value + '</pre>');
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
 });
