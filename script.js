@@ -21,6 +21,7 @@ clearButton.addEventListener('click', () => {
 
 const titleInput = document.getElementById('title');
 const downloadButton = document.getElementById('download');
+
 downloadButton.addEventListener('click', () => {
     const title = titleInput.value.trim() || 'untitled';
     const content = notepad.value;
