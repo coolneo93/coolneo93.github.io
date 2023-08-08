@@ -5,7 +5,7 @@ let selectedTabIndex = 0;
 
 function selectTab(index) {
     selectedTabIndex = index;
-    notepad.value = tabs[selectedTabIndex] || '';
+    notepad.value = tabs[selectedTabIndex].content || '';
 }
 
 function renderTabs() {
@@ -14,17 +14,28 @@ function renderTabs() {
         const tabDiv = document.createElement('div');
         const tabButton = document.createElement('button');
         const closeButton = document.createElement('button');
+        const renameInput = document.createElement('input');
 
-        tabButton.textContent = `Tab ${index + 1}`;
+        renameInput.type = 'text';
+        renameInput.value = content.title || `Tab ${index + 1}`;
+        renameInput.onchange = (event) => renameTab(index, event.target.value);
+
+        tabButton.textContent = content.title || `Tab ${index + 1}`;
         closeButton.textContent = 'Close';
 
         tabButton.onclick = () => selectTab(index);
         closeButton.onclick = () => closeTab(index);
 
         tabDiv.appendChild(tabButton);
+        tabDiv.appendChild(renameInput);
         tabDiv.appendChild(closeButton);
         tabsDiv.appendChild(tabDiv);
     });
+}
+
+function renameTab(index, title) {
+    tabs[index].title = title;
+    renderTabs();
 }
 
 function closeTab(index) {
@@ -36,28 +47,14 @@ function closeTab(index) {
     selectTab(selectedTabIndex);
 }
 
-function saveTabsToLocalStorage() {
-    localStorage.setItem('tabs', JSON.stringify(tabs));
-}
-
-function loadTabsFromLocalStorage() {
-    const savedTabs = localStorage.getItem('tabs');
-    if (savedTabs) {
-        tabs.push(...JSON.parse(savedTabs));
-        renderTabs();
-        selectTab(0);
-    }
-}
-
 document.getElementById('new-tab').onclick = () => {
-    tabs.push('');
+    tabs.push({ title: '', content: '' });
     renderTabs();
     selectTab(tabs.length - 1);
 };
 
 document.getElementById('save-tabs').onclick = () => {
-    tabs[selectedTabIndex] = notepad.value;
-    saveTabsToLocalStorage();
+    tabs[selectedTabIndex].content = notepad.value;
 };
 
 document.getElementById('clear-tabs').onclick = () => {
@@ -65,7 +62,6 @@ document.getElementById('clear-tabs').onclick = () => {
     selectedTabIndex = 0;
     notepad.value = '';
     renderTabs();
-    localStorage.removeItem('tabs');
 };
 
 document.getElementById('print').addEventListener('click', () => {
@@ -79,7 +75,7 @@ document.getElementById('print').addEventListener('click', () => {
 });
 
 document.getElementById('download').addEventListener('click', () => {
-    const title = `Tab ${selectedTabIndex + 1}`;
+    const title = tabs[selectedTabIndex].title || `Tab ${selectedTabIndex + 1}`;
     const content = notepad.value;
     const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
@@ -96,7 +92,5 @@ document.getElementById('download').addEventListener('click', () => {
 });
 
 notepad.onkeyup = () => {
-    tabs[selectedTabIndex] = notepad.value;
+    tabs[selectedTabIndex].content = notepad.value;
 };
-
-loadTabsFromLocalStorage();
