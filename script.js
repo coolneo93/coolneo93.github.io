@@ -19,9 +19,6 @@ clearButton.addEventListener('click', () => {
     localStorage.removeItem('notepadText');
 });
 
-const titleInput = document.getElementById('title');
-const downloadButton = document.getElementById('download');
-
 downloadButton.addEventListener('click', () => {
     const title = titleInput.value.trim() || 'untitled';
     const content = notepad.value;
@@ -31,7 +28,14 @@ downloadButton.addEventListener('click', () => {
     const a = document.createElement('a');
     a.href = url;
     a.download = `${title}.txt`;
+
+    // Append the anchor to the body
+    document.body.appendChild(a);
     a.click();
+
+    // Remove the anchor from the body
+    document.body.removeChild(a);
 
     URL.revokeObjectURL(url);
 });
+
