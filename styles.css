@@ -1,31 +1,21 @@
+#tabs > div {
+    display: inline-block;
+    margin-right: 10px;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 40px;
-background-color: black;
-color: white;
-}
-
-#tabs div {
-    display: flex;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    margin-right: 5px;
-}
-
-#tabs button {
-    padding: 5px;
-    cursor: pointer;
-}
-
-#tabs button:last-child {
-    background-color: #f44336;
+    background-color: black;
     color: white;
-    margin-left: 5px;
 }
 
-#notepad {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+textarea {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+input[type="text"] {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
 }
