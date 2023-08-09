@@ -47,6 +47,19 @@ function closeTab(index) {
     selectTab(selectedTabIndex);
 }
 
+function saveTabsToLocalStorage() {
+    localStorage.setItem('tabs', JSON.stringify(tabs));
+}
+
+function loadTabsFromLocalStorage() {
+    const savedTabs = localStorage.getItem('tabs');
+    if (savedTabs) {
+        tabs.push(...JSON.parse(savedTabs));
+        renderTabs();
+        selectTab(0);
+    }
+}
+
 document.getElementById('new-tab').onclick = () => {
     tabs.push({ title: '', content: '' });
     renderTabs();
@@ -55,6 +68,7 @@ document.getElementById('new-tab').onclick = () => {
 
 document.getElementById('save-tabs').onclick = () => {
     tabs[selectedTabIndex].content = notepad.value;
+    saveTabsToLocalStorage();
 };
 
 document.getElementById('clear-tabs').onclick = () => {
@@ -94,3 +108,5 @@ document.getElementById('download').addEventListener('click', () => {
 notepad.onkeyup = () => {
     tabs[selectedTabIndex].content = notepad.value;
 };
+
+loadTabsFromLocalStorage();
