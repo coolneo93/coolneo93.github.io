@@ -134,7 +134,7 @@ button.patreon:hover {
 }
 
 /* Media Queries for Responsive Design */
-@media (min-width: 600px) {
+@media (min-width: 700px) {
     .contact form {
         flex-direction: row;
         justify-content: space-between;
