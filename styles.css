@@ -1,21 +1,49 @@
-#tabs > div {
-    display: inline-block;
-    margin-right: 10px;
-}
-
 body {
-    background-color: black;
-    color: white;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
-textarea {
-    background-color: black;
-    color: white;
-    border: 1px solid white;
+.container {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input[type="text"] {
-    background-color: black;
+.links {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #ff0000;
     color: white;
-    border: 1px solid white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 10px;
+}
+
+button.youtube {
+    background-color: #ff0000;
+}
+
+button.patreon {
+    background-color: #f96854;
+}
+
+button.youtube:hover {
+    background-color: #cc0000;
+}
+
+button.patreon:hover {
+    background-color: #e64c2e;
 }
