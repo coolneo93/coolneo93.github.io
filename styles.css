@@ -60,3 +60,55 @@ button.patreon:hover {
 .services p {
     margin: 10px 0;
 }
+
+.contact {
+    margin-top: 40px;
+}
+
+.contact h2 {
+    margin-bottom: 10px;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.contact label {
+    margin-top: 10px;
+}
+
+.contact input, .contact textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333333;
+    color: white;
+}
+
+.contact input[type="submit"] {
+    align-self: center;
+    background-color: #ff0000;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact input[type="submit"]:hover {
+    background-color: #cc0000;
+}
+
+.contact p {
+    margin-top: 20px;
+}
+
+.contact a {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
