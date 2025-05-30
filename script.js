@@ -4,7 +4,7 @@ const scoreDisplay = document.getElementById("score");
 const gameOverDiv = document.getElementById("gameOver");
 
 let gravity = 2;
-let isJumping = false;
+let isJumping = true;
 let velocity = 0;
 let score = 0;
 let gameRunning = true;
