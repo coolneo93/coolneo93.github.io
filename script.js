@@ -3,7 +3,7 @@ const block = document.getElementById("block");
 const scoreDisplay = document.getElementById("score");
 const gameOverDiv = document.getElementById("gameOver");
 
-let gravity = 2;
+let gravity = -2;
 let isJumping = true;
 let velocity = 0;
 let score = 0;
