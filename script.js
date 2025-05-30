@@ -16,7 +16,7 @@ const gameOverSound = new Audio("gameover.wav");
 
 function jump() {
   if (!gameRunning) return;
-  velocity = 1;
+  velocity = 20;
   jumpSound.currentTime = 0;
   jumpSound.play();
 }
