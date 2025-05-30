@@ -3,7 +3,7 @@ const block = document.getElementById("block");
 const scoreDisplay = document.getElementById("score");
 const gameOverDiv = document.getElementById("gameOver");
 
-let gravity = 2;
+let gravity = 1;
 let isJumping = false;
 let velocity = 0;
 let score = 0;
@@ -16,7 +16,7 @@ const gameOverSound = new Audio("gameover.wav");
 
 function jump() {
   if (!gameRunning) return;
-  velocity = -20;
+  velocity = -10;
   jumpSound.currentTime = 0;
   jumpSound.play();
 }
